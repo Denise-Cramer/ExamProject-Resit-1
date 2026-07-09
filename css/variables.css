@@ -1,0 +1,24 @@
+:root {
+    /* Color Variables */
+    --color-black: #111111;
+    --color-white: #ffffff;
+    --color-light-grey: #f5f5f5;
+    --color-dark-grey: #666666;
+    --color-yellow: #fffd9f;
+
+    /* Font Variables */
+    --font-heading: "Instrument Sans", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    /*Layout Variables */
+    --border: 1px solid var(--color-black);
+    --container-width: 1200px;
+
+    /*Spacing Variables */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+
+    /*border-radius Variables */
+    --border-radius: 4px;
+}
