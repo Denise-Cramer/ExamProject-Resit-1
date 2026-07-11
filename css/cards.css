@@ -1,0 +1,27 @@
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.artwork-card {
+    border: var(--border);
+    padding: 1rem;
+    background: var(--color-white);
+}
+
+.artwork-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.artwork-card h2 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.artwork-card p {
+    margin-top: 0.25rem;
+}
