@@ -14,15 +14,21 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: var(--font-body);
     background-color: var(--color-white);
     color: var(--color-black);
     line-height: 1.6;
 }
 
+main {
+    flex: 1;
+}
+
 img {
     display: block;
-    text-decoration: none;
     max-width: 100%;
     height: auto;
 }
