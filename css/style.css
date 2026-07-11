@@ -81,3 +81,21 @@ p {
 .hidden {
     display: none;
 }
+
+.hero {
+    width: min(1400px, 90%);
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+.hero-content {
+    max-width: 40rem;
+}
+
+.hero h1 {
+    margin-bottom: 0.75rem;
+}
+
+.hero-text {
+    max-width: 40rem;
+}
