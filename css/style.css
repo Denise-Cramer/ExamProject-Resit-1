@@ -83,7 +83,7 @@ p {
 }
 
 .hero {
-    width: min(1400px, 90%);
+    width: min(1400px, 95%);
     margin: 0 auto;
     padding: 3rem 0;
 }
@@ -109,5 +109,5 @@ p {
 
 .breadcrumb a:hover, .breadcrumb a:focus-visible {
     text-decoration: none;
-    color: var(--dark-grey);
+    color: var(--color-dark-grey);
 }

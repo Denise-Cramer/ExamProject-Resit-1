@@ -1,0 +1,113 @@
+/*Account pages*/
+
+.account-page {
+    background-color: var(--color-black);
+}
+
+.account-page .hero {
+    width: 100%;
+    margin: 0;
+    background-color: var(--color-white);
+}
+
+.account-page .hero-content {
+    width: min(1600px, 96%);
+    max-width: none;
+    margin: 0 auto;
+}
+
+.account-section {
+    width: min(1400px, 100%);
+    margin: 0 auto;
+    padding: 4rem 0 6rem;
+}
+
+.account-card {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-radius: var(--border-radius);
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: var(--border);
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.form-group input:focus-visible, .form-group textarea:focus-visible {
+    outline: 3px solid var(--color-yellow);
+    outline-offset: 2px;
+}
+
+.form-message {
+    font-size: 0.75rem;
+    color: var(--color-dark-grey);
+}
+
+.form-status {
+    min-height: 1.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.primary-button, .secondary-button {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.65rem 1.25rem;
+    border: var(--border);
+    font-weight: 700;
+    text-align: center;
+}
+
+.primary-button {
+    align-self: center;
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.primary-button:hover, .primary-button:focus-visible {
+    background-color: var(--color-yellow);
+}
+
+.secondary-button {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.secondary-button:hover, .secondary-button:focus-visible {
+    background-color: var(--color-light-grey);
+    color: var(--color-black);
+}
+
+.account-switch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.account-switch p {
+    font-size: 0.75rem;
+}

@@ -45,3 +45,18 @@
         flex-wrap: wrap;
     }
 }
+
+@media (max-width: 768px) {
+    .account-section {
+        width: 90%;
+        padding: 3rem 0 4rem;
+    }
+
+    .account-card {
+        padding: 2rem 1.25rem;
+    }
+
+    .primary-button, .secondary-button {
+        min-height: 44px;
+    }
+}
