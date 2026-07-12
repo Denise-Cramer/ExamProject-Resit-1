@@ -51,3 +51,114 @@
     background-color: var(--color-yellow);
     color: var(--color-black);
 }
+
+/* Artwork details page*/
+
+.artwork-details-section {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    padding: 2rem 0 5rem;
+    border-top: var(--border);
+}
+
+.artwork-details-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: var(--border);
+    background-color: var(--color-white);
+}
+
+.artwork-details-image {
+    width: 100%;
+    aspect-ratio: 8 / 5;
+    object-fit: cover;
+}
+
+.artwork-details-content {
+    margin-top: 1.5rem;
+}
+
+.artwork-details-content h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.artwork-metadata {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.artwork-metadata div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
+}
+
+.artwork-metadata dt {
+    font-weight: 700;
+}
+
+.artwork-metadata dd{
+    margin: 0;
+}
+
+.artwork-description {
+    margin-top: 1.5rem;
+}
+
+.artwork-description h3 {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.artwork-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.owner-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.details-button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border: var(--border);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.details-button:hover, .details-button:focus-visible {
+    background-color: var(--color-yellow);
+}
+
+.edit-button {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.edit-button:hover, .edit-button:focus-visible{
+    border-color: var(--color-black);
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.delete-button {
+    border-color:var(--color-black);
+    background-color: #FF7878;
+    color: var(--color-black);
+}
+
+.delete-button:hover, .delete-button:focus-visible {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}

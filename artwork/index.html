@@ -61,27 +61,70 @@
  <section class="hero">
     <div class="hero-container">
         <h1>ARTWORK DETAILS</h1>
-        <p class="hero-text"> Find out more about this artwork. </p>
+        <nav class="breadcrumb" aria-label="breadcrumb">
+            <a href="../index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <span>Artwork details</span>
+        </nav>
     </div>
  </section>
 
- <section class="artwork-details container">
+     <section class="artwork-details container">
+         <article class="artowrk-details-card">
 
-    <img src="https://placehold.co/800x600" alt="Artwork Title">  
-    <div class="artwork-info">
-        <h2>Artwork Title</h2>
-        <p class="artist"> Artist Name</p>
-        <p><italic>Year</italic></p>
-        <p>Medium:</p>
-        <h3>Description</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <div class="artwork-actions">
-            <button>Edit</button>
-            <button>Back to gallery</button>
-            <button>Delete</button>
-        </div>
-    </div>
- </section>
+          <img class="artwork-details-image" 
+          src="https://placehold.co/800x600" 
+          alt="Artwork Title"> 
+
+            <div class="artwork-details-content">
+                <h2>Artwork Title</h2>
+
+                <dl class="artwork-metadata">
+                    <div>
+                        <dt>Artist</dt>
+                        <dd>Artist name</dd>
+                    </div>
+
+                    <div>
+                        <dt>Year</dt>
+                        <dd>2026</dd>
+                    </div>
+
+                    <div> 
+                        <dt>Medium</dt>
+                        <dd>Oil on canvas</dd>
+                    </div>
+
+                    <div>
+                        <dt>Location</dt>
+                        <dd>Oslo, Norway</dd>
+                    </div>
+                </dl>
+
+                <div class="artwork-description">
+                    <h3>Description</h3>
+
+                    <p>Placeholder description for the artwork</p>
+                </div>
+
+                <div class="artwork-actions">
+                    <a href="../index.html" class="details-button">
+                        BACK TO GALLERY
+                    </a>
+
+                    <div class="owner-actions-hidden">
+                        <a href="./edit.html" class="details-button edit-button">
+                            EDIT
+                        </a>
+
+                        <button class="details-button delete-button" type="button">
+                            DELETE
+                        </button>
+                    </div>
+                </div>
+            </div>
+         </article> 
+    </section>
 </main>
 <footer class="site-footer">
     <div class="footer-container">

@@ -99,3 +99,15 @@ p {
 .hero-text {
     max-width: 40rem;
 }
+
+.breadcrumb {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+}
+
+.breadcrumb a:hover, .breadcrumb a:focus-visible {
+    text-decoration: none;
+    color: var(--dark-grey);
+}

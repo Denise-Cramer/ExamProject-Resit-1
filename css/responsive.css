@@ -21,3 +21,27 @@
         margin-top: 0;
     }
 }
+
+@media (max-width: 768px) {
+    .artwork-details-section {
+        width: 92%;
+        padding: 1rem 0 3rem;
+    }
+
+    .artwork-details-card {
+        padding: 1rem;
+    }
+
+    .artwork-metadata div {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+    }
+
+    .artwork-actions {
+        flex-wrap: wrap;
+    }
+
+    .owner-actions {
+        flex-wrap: wrap;
+    }
+}
