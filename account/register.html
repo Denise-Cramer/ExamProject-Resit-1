@@ -48,7 +48,7 @@
                 <i class="fa-solid fa-user"></i>
             </a>
             
-            <a href="./register.html" aria-label="Home">
+            <a href="../index.html" aria-label="Home">
                 <i class="fa-solid fa-home"></i>
             </a>
 
@@ -57,11 +57,107 @@
     </div>
 </header>
 
-<main>
- <section class="hero">
-    <h1> REGISTER</h1>
-        <p class="hero-text"> Create a new account to access our features. </p>
- </section>
+<main class="account-page">
+    <section class="hero">
+        <div class="hero-content">
+            <h1> REGISTER</h1>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <span aria-hidden="true">/</span>
+                <span>Register</span>
+            </nav>
+        </div>
+    </section>
+
+    <section class="account-section">
+        <div class="account-card">
+
+            <form id="register-form" class="account-form">
+
+                <div class="form-group">
+                    <label for="register-name">Username</label>
+
+                    <input
+                        type="text"
+                        id="register-name"
+                        name="name"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <p class="form-message">
+                        Username may only contain letters, numbers and underscores
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        name="email"
+                        autocomplete="email"
+                        required
+                    >
+                    
+                    <p class="form-message">
+                        Use your stud.noroff.no email address
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+
+                    <input
+                        type="password"
+                        id="register-password"
+                        name="password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <p class="form-message">
+                        Password must contain at least 8 characters
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-avatar">Avatar URL</label>
+
+                    <input
+                        type="url"
+                        id="register-avatar"
+                        name="avatar"
+                        autocomplete="url"
+                    >
+
+                    <p class="form-message">
+                        Optional
+                    </p>
+                </div>
+
+                <button type="submit" class="primary-button">
+                    REGISTER
+                </button>
+
+                <p
+                    id="register-status"
+                    class="form-status"
+                    role="status"
+                    aria-live="polite">
+                </p>               
+            </form>
+            <div class="account-switch">
+                <p>Already have an account?</p>
+
+                <a href="./login.html" class="secondary-button">
+                    LOGIN
+                </a>
+            </div>
+        </div>
+    </section>
 
 </main>
     
