@@ -59,4 +59,8 @@
     .primary-button, .secondary-button {
         min-height: 44px;
     }
+
+    .edit-form-actions {
+        flex-wrap: wrap;
+    }
 }

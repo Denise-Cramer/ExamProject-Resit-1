@@ -57,10 +57,131 @@
     </div>
 </header>
 
-<main>
+<main class="account-page">
  <section class="hero">
-    <h1> EDIT ARTWORK</h1>
-        <p class="hero-text"> Update the details of your artwork. </p>
+    <div class="hero-content">
+        <h1>EDIT ARTWORK</h1>
+
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <span>Edit Artwork</span>
+        </nav>
+    </div>
+ </section>
+
+ <section class="account-section">
+    <div class="account-card">
+        <form id="create-artwork-form" class="account-form">
+            <div class="form-group">
+                <label for="create-title">Artwork Title</label>
+                <input
+                    type="text"
+                    id="edit-title"
+                    name="title"
+                    value="The Scream"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="edit-artist">Artist</label>
+                <input
+                    type="text"
+                    id="edit-artist"
+                    name="artist"
+                    value="Edvard Munch"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="edit-year">Year</label>
+                <input  
+                    type="number"
+                    id="edit-year"
+                    name="year"
+                    min="1"
+                    value="1893"
+                    required
+                >
+                <p class="form-message">
+                    Please enter a valid year
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-medium">Medium</label>
+                <input
+                    type="text"
+                    id="edit-medium"
+                    name="medium"
+                    value="Oil, tempera and pastel on cardboard"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+                <label for="edit-location">Location</label>
+                <input
+                    type="text"
+                    id="edit-location"
+                    name="location"
+                    value="National Museum, Oslo, Norway"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="edit-image">Image URL</label>
+                <input
+                    type="url"
+                    id="edit-image"
+                    name="image"
+                    value="https://example.no/jpg"
+                    required
+                >
+                <p class="form-message">
+                    Please enter a public image URL
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="create-description">Description</label>
+                <textarea
+                    id="create-description"
+                    name="description"
+                    rows="6"
+                    required
+                >The Scream is one of the most iconic works of expressionism. It was created by the Norwegian artist Edvard Munch in 1893</textarea>
+                <p class="form-message"> 
+                    Description must be filled in
+                </p>
+            </div>
+
+            <div class="edit-form-actions">
+                <a href="./index.html" class="secondary-button">
+                    BACK TO GALLERY
+                </a>
+
+                <button type="submit" class="primary-button">
+                    SAVE
+                </button>
+
+                <button type="button" class="delete-form-button">
+                    DELETE
+                </button>
+            </div>
+
+            <p
+                id="create-status"
+                class="form-status"
+                role="status"
+                aria-live="polite"
+            ></p>
+        </form>
+    </div>
  </section>
 
 </main>
