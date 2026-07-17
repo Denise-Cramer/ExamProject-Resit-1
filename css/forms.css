@@ -60,6 +60,11 @@
     outline-offset: 2px;
 }
 
+.form-group textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
 .form-message {
     font-size: 0.75rem;
     color: var(--color-dark-grey);
