@@ -23,39 +23,67 @@
 
     <body>
         <header class="site-header">
-    <div class="container header-container">
+    <header class="site-header">
+        <div class="header-container">
 
-<div class="header-left">
+            <div class="header-left">
+                <a href="../index.html" class="logo">
+                    <span>NORDIC</span>
+                    <span>ART</span>
+                    <span>ARCHIVE</span>
+                </a>
 
-            <a href="../index.html" class="logo">
-            <span>NORDIC</span>
-            <span>ART</span>
-            <span>ARCHIVE</span>
-        </a>
+                <button
+                    type="button"
+                    id="menu-button"
+                    class="menu-button"
+                    aria-label="Open navigation menu"
+                    aria-controls="main-menu"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
 
-        <button class="menu-button" type="button" aria-label="open navigation menu">
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
-</div>
+            <nav
+                id="main-menu"
+                class="main-menu hidden"
+                aria-label="Main navigation"
+            >
+                <ul id="menu-list">
+                    <!-- The links for the menu are created by ui.js -->
+                </ul>
+            </nav>
 
-        <nav class="header-icons">
+            <div class="header-icons">
+                <a
+                    href="../index.html"
+                    aria-label="View gallery"
+                    title="Gallery"
+                >
+                    <i class="fa-regular fa-image" aria-hidden="true"></i>
+                </a>
 
-            <a href="./index.html" aria-label="Gallery">
-                <i class="fa-solid fa-image"></i>
-            </a>
+                <a
+                    href="../account/login.html"
+                    id="account-link"
+                    aria-label="Login"
+                    title="Login"
+                >
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                </a>
 
-            <a href="../account/login.html" aria-label="User">
-                <i class="fa-solid fa-user"></i>
-            </a>
-            
-            <a href="../index.html" aria-label="Home">
-                <i class="fa-solid fa-home"></i>
-            </a>
+                <a
+                    href="../index.html"
+                    aria-label="Go to homepage"
+                    title="Home"
+                >
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
+                </a>
+            </div>
 
-        </nav>
-
-    </div>
-</header>
+        </div>
+    </header>
 
 <main class="account-page">
  <section class="hero">

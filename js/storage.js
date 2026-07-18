@@ -15,7 +15,13 @@ function getUser() {
         return null;
     }
 
-    return JSON.parse(savedUser);
+    try {
+        return JSON.parse(savedUser);
+    } catch (error) {
+        console.error("Could not find saved user:", error);
+        localStorage.removeItem(USER_KEY);
+        return null;
+    }
 }
 
 function clearUser() {
@@ -26,4 +32,9 @@ function isLoggedIn() {
     const user = getUser();
 
     return Boolean(user?.accessToken);
+}
+
+function getAccessToken() {
+    const user = getUser();
+    return user?.accessToken || null;
 }
