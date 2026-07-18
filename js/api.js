@@ -27,3 +27,29 @@ async function getArtwork(id) {
     return result.data;
     
 }
+
+async function loginUser(email, password) {
+    const response = await fetch(LOGIN_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    });
+    
+    const result = await response.json();
+
+    if (!response.ok) {
+        const message =
+            result.errors?.[0]?.message ||
+            "Failed to log in. Please check your e-mail and password"
+
+            throw new Error(message);
+    }
+
+    return result.data;
+}
