@@ -109,3 +109,28 @@ async function createArtwork(artworkData) {
 
     return result.data;
 }
+
+async function updateArtwork(id, artworkData) {
+    const accessToken = getAccessToken();
+
+    const response = await fetch(`${ARTWORKS_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+            "X-Noroff-API-Key": API_KEY
+        },
+        body: JSON.stringify(artworkData)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            result.errors?.[0]?.message ||
+            "Could not update artwork."
+        );
+    }
+
+    return result.data;
+}
