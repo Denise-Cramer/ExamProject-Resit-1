@@ -1,36 +1,50 @@
-const queryString = window.location.search;
-const params = new URLSearchParams(queryString);
-const artworkId = params.get("id");
+const createArtworkForm =
+    document.getElementById("create-artwork-form");
 
-if (artworkId) {
-    testSingleArtwork();
-} else {
-    console.error("No artwork ID was found in the URL.");
+const artworkTitle =
+    document.getElementById("artwork-title");
+
+if (createArtworkForm) {
+    createArtworkForm.addEventListener(
+        "submit",
+        handleCreateArtwork
+    );
 }
 
-async function testSingleArtwork() {
+if (artworkTitle) {
+    loadSingleArtwork();
+}
+
+async function loadSingleArtwork() {
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const artworkId = params.get("id");
+
+    if (!artworkId) {
+        console.error("No artwork ID was found in the URL.");
+        return;
+    }
+
     try {
         const artwork = await getArtwork(artworkId);
 
-        console.log("Selected artwork:", artwork);
-
         document.getElementById("artwork-title").textContent =
             artwork.title;
-        
+
         document.getElementById("artwork-artist").textContent =
-                artwork.artist;
+            artwork.artist;
 
         document.getElementById("artwork-year").textContent =
-            artwork.year
+            artwork.year;
 
         document.getElementById("artwork-medium").textContent =
-            artwork.medium
+            artwork.medium;
 
         document.getElementById("artwork-location").textContent =
-            artwork.location
+            artwork.location;
 
         document.getElementById("artwork-description").textContent =
-            artwork.description
+            artwork.description;
 
         const artworkImage =
             document.getElementById("artwork-image");
@@ -43,8 +57,71 @@ async function testSingleArtwork() {
             artwork.image?.alt ||
             artwork.title ||
             "Artwork image";
-            
     } catch (error) {
-        console.error("Could not load selected artwork:", error);
+        console.error(
+            "Could not load selected artwork:",
+            error
+        );
+    }
+}
+
+async function handleCreateArtwork(event) {
+    event.preventDefault();
+
+    const statusMessage =
+        document.getElementById("create-status");
+
+    statusMessage.textContent = "";
+
+    const title =
+        document.getElementById("create-title").value.trim();
+
+    const artist =
+        document.getElementById("create-artist").value.trim();
+
+    const year =
+        Number(document.getElementById("create-year").value);
+
+    const medium =
+        document.getElementById("create-medium").value.trim();
+
+    const location =
+        document.getElementById("create-location").value.trim();
+
+    const imageUrl =
+        document.getElementById("create-image").value.trim();
+
+    const description =
+        document.getElementById(
+            "create-description"
+        ).value.trim();
+
+    const artworkData = {
+        title: title,
+        artist: artist,
+        year: year,
+        medium: medium,
+        location: location,
+        description: description,
+        image: {
+            url: imageUrl,
+            alt: `${title} by ${artist}`
+        }
+    };
+
+    try {
+        statusMessage.textContent =
+            "Creating artwork...";
+
+        const newArtwork =
+            await createArtwork(artworkData);
+
+        statusMessage.textContent =
+            "Artwork created successfully!";
+
+        window.location.href =
+            `./index.html?id=${newArtwork.id}`;
+    } catch (error) {
+        statusMessage.textContent = error.message;
     }
 }

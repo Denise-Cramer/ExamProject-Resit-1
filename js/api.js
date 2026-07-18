@@ -3,7 +3,7 @@ async function getArtworks() {
 
     if(!response.ok) {
         throw new Error(
-            `Could not fetch artowrks. Status: ${response.status}`
+            `Could not fetch artworks. Status: ${response.status}`
         );
     }
 
@@ -83,6 +83,28 @@ async function registerUser(name, email, password, avatarUrl) {
             "Could not register the account.";
 
         throw new Error(message);
+    }
+
+    return result.data;
+}
+
+async function createArtwork(artworkData) {
+    const accessToken = getAccessToken();
+
+    const response = await fetch(ARTWORKS_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+            "X-Noroff-API-Key": API_KEY
+        },
+        body: JSON.stringify(artworkData)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw new Error(result.errors?.[0]?.message || "Could not create artwork.");
     }
 
     return result.data;
