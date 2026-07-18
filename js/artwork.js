@@ -1,6 +1,9 @@
 const createArtworkForm =
     document.getElementById("create-artwork-form");
 
+const editArtworkForm =
+    document.getElementById("edit-artwork-form");
+
 const artworkTitle =
     document.getElementById("artwork-title");
 
@@ -11,40 +14,71 @@ if (createArtworkForm) {
     );
 }
 
+if (editArtworkForm) {
+    loadEditArtwork();
+
+    editArtworkForm.addEventListener(
+        "submit",
+        handleEditArtwork
+    );
+}
+
 if (artworkTitle) {
     loadSingleArtwork();
 }
 
-async function loadSingleArtwork() {
+function getArtworkIdFromUrl() {
     const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
-    const artworkId = params.get("id");
+
+    return params.get("id");
+}
+
+async function loadSingleArtwork() {
+    const artworkId = getArtworkIdFromUrl();
 
     if (!artworkId) {
-        console.error("No artwork ID was found in the URL.");
+        console.error(
+            "No artwork ID was found in the URL."
+        );
+
         return;
     }
 
     try {
         const artwork = await getArtwork(artworkId);
 
-        document.getElementById("artwork-title").textContent =
-            artwork.title;
+        const editArtworkLink =
+            document.getElementById("edit-artwork-link");
 
-        document.getElementById("artwork-artist").textContent =
-            artwork.artist;
+        if (editArtworkLink) {
+            editArtworkLink.href =
+                `./edit.html?id=${artwork.id}`;
+        }
 
-        document.getElementById("artwork-year").textContent =
-            artwork.year;
+        document.getElementById(
+            "artwork-title"
+        ).textContent = artwork.title;
 
-        document.getElementById("artwork-medium").textContent =
-            artwork.medium;
+        document.getElementById(
+            "artwork-artist"
+        ).textContent = artwork.artist;
 
-        document.getElementById("artwork-location").textContent =
-            artwork.location;
+        document.getElementById(
+            "artwork-year"
+        ).textContent = artwork.year;
 
-        document.getElementById("artwork-description").textContent =
-            artwork.description;
+        document.getElementById(
+            "artwork-medium"
+        ).textContent = artwork.medium;
+
+        document.getElementById(
+            "artwork-location"
+        ).textContent = artwork.location;
+
+        document.getElementById(
+            "artwork-description"
+        ).textContent = artwork.description;
 
         const artworkImage =
             document.getElementById("artwork-image");
@@ -65,6 +99,58 @@ async function loadSingleArtwork() {
     }
 }
 
+async function loadEditArtwork() {
+    const artworkId = getArtworkIdFromUrl();
+
+    const statusMessage =
+        document.getElementById("edit-status");
+
+    if (!artworkId) {
+        statusMessage.textContent =
+            "No artwork ID was found in the URL.";
+
+        return;
+    }
+
+    try {
+        statusMessage.textContent =
+            "Loading artwork...";
+
+        const artwork = await getArtwork(artworkId);
+
+        document.getElementById("edit-title").value =
+            artwork.title || "";
+
+        document.getElementById("edit-artist").value =
+            artwork.artist || "";
+
+        document.getElementById("edit-year").value =
+            artwork.year || "";
+
+        document.getElementById("edit-medium").value =
+            artwork.medium || "";
+
+        document.getElementById("edit-location").value =
+            artwork.location || "";
+
+        document.getElementById("edit-image").value =
+            artwork.image?.url || "";
+
+        document.getElementById(
+            "edit-description"
+        ).value = artwork.description || "";
+
+        statusMessage.textContent = "";
+    } catch (error) {
+        statusMessage.textContent = error.message;
+
+        console.error(
+            "Could not load artwork for editing:",
+            error
+        );
+    }
+}
+
 async function handleCreateArtwork(event) {
     event.preventDefault();
 
@@ -74,22 +160,36 @@ async function handleCreateArtwork(event) {
     statusMessage.textContent = "";
 
     const title =
-        document.getElementById("create-title").value.trim();
+        document.getElementById(
+            "create-title"
+        ).value.trim();
 
     const artist =
-        document.getElementById("create-artist").value.trim();
+        document.getElementById(
+            "create-artist"
+        ).value.trim();
 
     const year =
-        Number(document.getElementById("create-year").value);
+        Number(
+            document.getElementById(
+                "create-year"
+            ).value
+        );
 
     const medium =
-        document.getElementById("create-medium").value.trim();
+        document.getElementById(
+            "create-medium"
+        ).value.trim();
 
     const location =
-        document.getElementById("create-location").value.trim();
+        document.getElementById(
+            "create-location"
+        ).value.trim();
 
     const imageUrl =
-        document.getElementById("create-image").value.trim();
+        document.getElementById(
+            "create-image"
+        ).value.trim();
 
     const description =
         document.getElementById(
@@ -122,6 +222,105 @@ async function handleCreateArtwork(event) {
         window.location.href =
             `./index.html?id=${newArtwork.id}`;
     } catch (error) {
-        statusMessage.textContent = error.message;
+        statusMessage.textContent =
+            error.message;
+
+        console.error(
+            "Could not create artwork:",
+            error
+        );
+    }
+}
+
+async function handleEditArtwork(event) {
+    event.preventDefault();
+
+    const artworkId = getArtworkIdFromUrl();
+
+    const statusMessage =
+        document.getElementById("edit-status");
+
+    statusMessage.textContent = "";
+
+    if (!artworkId) {
+        statusMessage.textContent =
+            "No artwork ID was found in the URL.";
+
+        return;
+    }
+
+    const title =
+        document.getElementById(
+            "edit-title"
+        ).value.trim();
+
+    const artist =
+        document.getElementById(
+            "edit-artist"
+        ).value.trim();
+
+    const year =
+        Number(
+            document.getElementById(
+                "edit-year"
+            ).value
+        );
+
+    const medium =
+        document.getElementById(
+            "edit-medium"
+        ).value.trim();
+
+    const location =
+        document.getElementById(
+            "edit-location"
+        ).value.trim();
+
+    const imageUrl =
+        document.getElementById(
+            "edit-image"
+        ).value.trim();
+
+    const description =
+        document.getElementById(
+            "edit-description"
+        ).value.trim();
+
+    const artworkData = {
+        title: title,
+        artist: artist,
+        year: year,
+        medium: medium,
+        location: location,
+        description: description,
+        image: {
+            url: imageUrl,
+            alt: `${title} by ${artist}`
+        }
+    };
+
+    try {
+        statusMessage.textContent =
+            "Saving changes...";
+
+        const updatedArtwork =
+            await updateArtwork(
+                artworkId,
+                artworkData
+            );
+
+        statusMessage.textContent =
+            "Artwork updated successfully!";
+
+        window.location.href =
+            `./index.html?id=${updatedArtwork.id}`;
+    } catch (error) {
+        statusMessage.textContent =
+            error.message;
+
+        console.error(
+            "Could not update artwork:",
+            error
+        );
     }
 }
