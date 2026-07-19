@@ -8,6 +8,8 @@ The resit assignment for the Frontend Development programme at Noroff.
 
 ## Repository
 
+https://github.com/Denise-Cramer/ExamProject-Resit-1
+
 ## Figma
 Style Guide: 
 https://www.figma.com/design/K8jPKQRzZMRD0KZlUU9myj/EXAM.PROJECT1.RESIT?node-id=0-1&p=f 
