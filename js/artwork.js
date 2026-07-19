@@ -10,6 +10,14 @@ const editDeleteButton =
 const artworkTitle =
     document.getElementById("artwork-title");
 
+if (
+    (createArtworkForm || editArtworkForm) &&
+    !isLoggedIn()
+) {
+    window.location.href =
+        "../account/login.html";
+}
+
 if (createArtworkForm) {
     createArtworkForm.addEventListener(
         "submit",
@@ -164,6 +172,13 @@ async function loadEditArtwork() {
 async function handleCreateArtwork(event) {
     event.preventDefault();
 
+    if (!isLoggedIn()) {
+        window.location.href =
+            "../account/login.html";
+
+            return;
+    }
+
     const statusMessage =
         document.getElementById("create-status");
 
@@ -244,6 +259,13 @@ async function handleCreateArtwork(event) {
 
 async function handleEditArtwork(event) {
     event.preventDefault();
+
+    if (!isLoggedIn()) {
+        window.location.href =
+            "../account/login.html";
+
+        return;
+    }
 
     const artworkId = getArtworkIdFromUrl();
 
@@ -336,6 +358,14 @@ async function handleEditArtwork(event) {
 }
 
 async function handleDeleteArtwork() {
+
+    if (!isLoggedIn()) {
+        window.location.href =
+            "../account/login.html";
+
+        return;
+    }
+    
     const artworkId = getArtworkIdFromUrl();
 
     const statusMessage =

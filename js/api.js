@@ -91,6 +91,12 @@ async function registerUser(name, email, password, avatarUrl) {
 async function createArtwork(artworkData) {
     const accessToken = getAccessToken();
 
+    if (!accessToken) {
+        throw new Error(
+            "You must be logged in to create an artwork"
+        );
+    }
+
     const response = await fetch(ARTWORKS_URL, {
         method: "POST",
         headers: {
@@ -112,6 +118,12 @@ async function createArtwork(artworkData) {
 
 async function updateArtwork(id, artworkData) {
     const accessToken = getAccessToken();
+
+        if (!accessToken) {
+        throw new Error(
+            "You must be logged in to edit an artwork"
+        );
+    }
 
     const response = await fetch(`${ARTWORKS_URL}/${id}`, {
         method: "PUT",
@@ -137,6 +149,12 @@ async function updateArtwork(id, artworkData) {
 
 async function deleteArtwork(id) {
     const accessToken = getAccessToken();
+
+        if (!accessToken) {
+        throw new Error(
+            "You must be logged in to delete an artwork"
+        );
+    }
 
     const response = await fetch(`${ARTWORKS_URL}/${id}`, {
         method: "DELETE",
