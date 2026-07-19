@@ -134,3 +134,24 @@ async function updateArtwork(id, artworkData) {
 
     return result.data;
 }
+
+async function deleteArtwork(id) {
+    const accessToken = getAccessToken();
+
+    const response = await fetch(`${ARTWORKS_URL}/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "X-Noroff-API-Key": API_KEY
+        }
+    });
+
+    if (!response.ok) {
+        const result = await response.json();
+
+        throw new Error(
+            result.errors?.[0]?.message ||
+            "Could not delete artwork"
+        );
+    }
+}

@@ -4,6 +4,9 @@ const createArtworkForm =
 const editArtworkForm =
     document.getElementById("edit-artwork-form");
 
+const editDeleteButton =
+    document.getElementById("edit-delete-button");
+
 const artworkTitle =
     document.getElementById("artwork-title");
 
@@ -20,6 +23,13 @@ if (editArtworkForm) {
     editArtworkForm.addEventListener(
         "submit",
         handleEditArtwork
+    );
+}
+
+if (editDeleteButton) {
+    editDeleteButton.addEventListener(
+        "click",
+        handleDeleteArtwork
     );
 }
 
@@ -323,4 +333,45 @@ async function handleEditArtwork(event) {
             error
         );
     }
+}
+
+async function handleDeleteArtwork() {
+    const artworkId = getArtworkIdFromUrl();
+
+    const statusMessage =
+        document.getElementById("edit-status");
+
+        if (!artworkId) {
+            statusMessage.textContent =
+            "No artwork ID was found";
+
+        return;
+    }
+
+    const shouldDelete = window.confirm(
+        "Are you sure you want to delete this artwork?"
+    );
+
+    if (!shouldDelete) {
+        return;
+    }
+
+    try {
+        statusMessage.textContent =
+            "Deleting artwork...";
+
+        await deleteArtwork(artworkId);
+
+        window.location.href =
+            "../index.html#gallery";
+    } catch (error) {
+        statusMessage.textContent =
+        error.message;
+
+        console.error(
+            "Could not delete artwork",
+            error
+        );
+    }
+    
 }
