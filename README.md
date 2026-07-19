@@ -1,7 +1,8 @@
 # Nordic Art Archive
 
 Exam Project 1
-The resit assignment for the Frontend Development programme at Noroff.
+Nordic Art Archive is a responsive web application built as the Exam Project 1 Resit for the Noroff Frontend Development programme.
+The application allows visitors to browse artworks, while registered users can create, edit, and delete their own artwork entries.
 
 ## Live Site
 
@@ -37,4 +38,5 @@ https://github.com/Denise-Cramer/ExamProject-Resit-1
 - Git
 - GitHub
 
-Author: Denise Cramer
+## Author: 
+Denise Cramer
