@@ -66,6 +66,20 @@ async function loadSingleArtwork() {
     try {
         const artwork = await getArtwork(artworkId);
 
+        const loggedInUser = getUser();
+
+        const isOwner =
+            loggedInUser &&
+            artwork.owner?.name === loggedInUser.name;
+
+        const ownerActions = 
+            document.getElementById("owner-actions");
+
+        if (ownerActions) {
+            ownerActions.style.display =
+                isOwner ? "flex" : "none";
+        }
+
         const editArtworkLink =
             document.getElementById("edit-artwork-link");
 
@@ -134,7 +148,24 @@ async function loadEditArtwork() {
         statusMessage.textContent =
             "Loading artwork...";
 
-        const artwork = await getArtwork(artworkId);
+        const artwork = 
+            await getArtwork(artworkId);
+
+        const loggedInUser = getUser ();
+
+        const isOwner = 
+            loggedInUser &&
+            artwork.owner?.name === loggedInUser.name;
+
+        if (!isOwner) {
+            statusMessage.textContent = 
+                "You do not have persmission to edit this artwork";
+
+            window.location.href =
+                `./index.html?id=${artworkId}`;
+
+            return;
+        }
 
         document.getElementById("edit-title").value =
             artwork.title || "";
@@ -365,7 +396,7 @@ async function handleDeleteArtwork() {
 
         return;
     }
-    
+
     const artworkId = getArtworkIdFromUrl();
 
     const statusMessage =
